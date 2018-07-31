@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text> \n</text>
+     <text > 请输入你的姓名 </text>
+     <input class="weui-input" name="input" placeholder="\t姓名" />
+     <text > \n </text>
+     <text > 请输入遗失物品 </text>
+     <input class="weui-input" name="input" placeholder="\t遗失物品" />
+      <text > \n </text>
+     <button> 确认登入 </button>
+    </block>
+
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
