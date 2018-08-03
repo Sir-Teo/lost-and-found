@@ -1,18 +1,40 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
+    <block>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text> \n</text>
-     <text > 请输入你的姓名 </text>
-     <input class="weui-input" name="input" placeholder="\t姓名" />
-     <text > \n </text>
-     <text > 请输入遗失物品 </text>
-     <input class="weui-input" name="input" placeholder="\t遗失物品" />
-      <text > \n </text>
-     <button> 确认登入 </button>
+      <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+  <view class="section">
+  <text>\n</text>
+  <text>请输入你的姓名</text>
+    <input name="name" placeholder="姓名" auto-focus/>
+  </view>
+  <view class="section">
+  <text>\n\n</text>
+  <text>请输入你的物品</text>
+    <input name="object" placeholder="物品"/>
+  </view>
+  <text>\n</text>
+  <view class="section section_gap">
+      <view class="section__title">失物/招领</view>
+      <radio-group name="gender">
+        <label><radio value="LOST"/>失物</label>
+        <label><radio value="FOUND"/>招领</label>
+      </radio-group>
+  </view>
+    <view class="btn-area">
+       <text>\n</text>     
+      <button formType="submit">确认提交</button>
+      <text>\n</text>
+      <button formType="reset">重置</button>
+      <text>\n</text>
+      <button>直接进入平台</button>
+    </view>
+    <view class="page__hd" wx:if="{{error}}">
+      <text>{{error}}</text>
+    </view>
+</form>
     </block>
 
   </view>
