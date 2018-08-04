@@ -12,13 +12,14 @@
   </view>
   <view class="section">
   <text>\n\n</text>
-  <text>请输入你的物品</text>
-    <input name="object" placeholder="物品"/>
+  <text>请输入物品名称</text>
+    <input name="object_name" placeholder="物品"/>
+    <textarea name="object_description" placeholder="描述你的物品"/>
   </view>
   <text>\n</text>
   <view class="section section_gap">
       <view class="section__title">失物/招领</view>
-      <radio-group name="gender">
+      <radio-group name="method">
         <label><radio value="LOST"/>失物</label>
         <label><radio value="FOUND"/>招领</label>
       </radio-group>

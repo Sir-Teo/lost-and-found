@@ -7,8 +7,81 @@ Page({
     motto: '失物招领平台',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    pickerHidden: true,
+    chosen: ''
   },
+  pickerConfirm: function (e) {
+    this.setData({
+      pickerHidden: true
+    })
+    this.setData({
+      chosen: e.detail.value
+    })
+  },
+
+  pickerCancel: function (e) {
+    this.setData({
+      pickerHidden: true
+    })
+  },
+
+  pickerShow: function (e) {
+    this.setData({
+      pickerHidden: false
+    })
+  },
+  formSubmit: function (e) {
+    var _this = this
+    /*********************    
+    wx.redirectTo({
+      url:'create_photo'
+    })
+    **********************/
+
+    wx.request({
+      url: '',
+      data:
+        {
+          name: e.detail.value.name,
+          object_name: e.detail.value.object_name,
+          object_description: e.detail.value.object_description,
+          method: e.detail.value
+        }
+      ,
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      success: function (res) {
+        var err = res.data.error
+        if (err) {
+          _this.setData({
+            error: err
+          })
+        }
+        else {
+          wx.redirectTo({
+            url: 'create_photo'
+          })
+        }
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+
+  },
+  formReset: function (e) {
+    console.log('form发生了reset事件，携带数据为：', e.detail.value)
+    this.setData({
+      chosen: ''
+    })
+  },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
