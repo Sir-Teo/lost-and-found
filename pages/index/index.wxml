@@ -39,7 +39,7 @@
     </block>
 
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="end_logo">
+    <text>失物招领平台</text>
   </view>
 </view>
